@@ -28,7 +28,7 @@ class ContaBancaria {
         const extrato = [];
         for (let i = 0; i < this.operacoes.length; i++) {
             const operacoes = this.operacoes[i];
-            const formatada = `Data: ${operacoes.data.toLocaleString('pt-BR')} - Tipo: ${operacoes.tipo} - Valor: R$ ${operacoes.valor}`;
+            const formatada = `Data: ${operacoes.data.toLocaleString('pt-BR')} - ${operacoes.tipo} - R$ ${operacoes.valor}`;
             extrato.push(formatada);
         }
         return extrato;
@@ -73,10 +73,10 @@ function efetuarOperacao(acao) {
         case 'extrato':
             consultarExtrato();
             break;
-            default:
-                alert('Operação inválida!');
-}
-limparValor();
+        default:
+            alert('Operação inválida!');
+    }
+    limparValor();
 }
 function sacar(valor) {
     const sucesso = conta.debitar(valor);
@@ -94,7 +94,7 @@ function consultarExtrato() {
         formatado += extrato[i] + '\n';
     }
     alert(formatado);
-
+}
 function obterValor() {
     const input = document.querySelector("#valor");
     let valor = input.value;
